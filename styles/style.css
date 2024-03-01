@@ -115,3 +115,7 @@ border-radius:5px;
     padding: 50px;
     display: none;
 }
+
+.news-photo img{
+    width:500px;
+}
