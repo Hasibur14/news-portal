@@ -1,3 +1,4 @@
+//News Category Container section
 const loadAllCategory = async () => {
 
     const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
@@ -14,6 +15,7 @@ const loadAllCategory = async () => {
 };
 
 
+//News Container section
 const loadNews = async (catID) => {
     // console.log(catID)
     const response = await fetch(`https://openapi.programming-hero.com/api/news/category/${catID}`);
@@ -21,7 +23,7 @@ const loadNews = async (catID) => {
     const allData = data.data;
 
     const newsContainer = document.getElementById('news-container');
-    newsContainer.innerHTML ='';
+    newsContainer.innerHTML = '';
     allData.forEach((item) => {
 
         const div = document.createElement('div');
@@ -73,13 +75,21 @@ const loadNews = async (catID) => {
     </div>
     `;
         newsContainer.appendChild(div);
-    })
+    });
+};
 
+const handleSearch = () =>{
+    const value = document.getElementById('search-box').value;
 
+    if(value){
+  loadNews(value)
+    }
+    else{
+        alert('Please Inter Valid ID')
+    }
+   
 }
-
-
-
+handleSearch()
 loadNews("01")
 loadAllCategory()
 
